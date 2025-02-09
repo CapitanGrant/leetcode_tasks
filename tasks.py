@@ -71,11 +71,15 @@ class Solution:
         res_num = sum([i for i in range(0, len_num+1)])
         return res_num - sum_num
 
-
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums1 = set(nums1)
+        nums2 = set(nums2)
+        lst = list(nums1 & nums2)
+        return lst
 
 sol = Solution()
 
-print(sol.missingNumber([9,6,4,2,3,5,7,0,1])) # [0, 1, 3]
+print(sol.intersection(nums1 = [4,9,5], nums2 = [9,4,9,8,4])) # [9, 4]
 # print(sol.mySqrt(9))
 
 # print(sol.isValid(s="()")) # true

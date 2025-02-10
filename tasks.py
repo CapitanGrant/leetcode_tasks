@@ -77,9 +77,25 @@ class Solution:
         lst = list(nums1 & nums2)
         return lst
 
-sol = Solution()
+    def isBadVersion(self, version: int, bad: int) -> bool:
+        if version == bad:
+            return True
+        return False
 
-print(sol.intersection(nums1 = [4,9,5], nums2 = [9,4,9,8,4])) # [9, 4]
+    def firstBadVersion(self, n: int) -> int:
+        low = 0
+        high = n - 1
+        while low < high:
+            mid = (low + high) // 2
+            if self.sBadVersion(mid):
+                high = mid
+            else:
+                low = mid + 1
+        return low
+
+sol = Solution()
+print(sol.firstBadVersion(5))
+
 # print(sol.mySqrt(9))
 
 # print(sol.isValid(s="()")) # true

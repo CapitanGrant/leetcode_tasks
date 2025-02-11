@@ -68,7 +68,7 @@ class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         sum_num = sum(nums)
         len_num = len(nums)
-        res_num = sum([i for i in range(0, len_num+1)])
+        res_num = sum([i for i in range(0, len_num + 1)])
         return res_num - sum_num
 
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
@@ -93,8 +93,34 @@ class Solution:
                 low = mid + 1
         return low
 
+    def removeOccurrences(self, s: str, part: str) -> str:
+        while part in s:
+            if s.find(part) != -1:
+                s = s[:s.find(part)] + s[s.find(part) + len(part):]
+        return s
+
+    def for_cicle(self, num: int) -> bool:
+        s = str(num)
+        result = []
+        if s[0] == '-':
+            result.append(int(s[0] + s[1]))  # обрабатываем отрицательное число
+            for digit in s[2:]:
+                result.append(int(digit))
+        else:
+            for digit in s:
+                result.append(int(digit))
+        nums = [i for i in result]
+        lst = []
+        for i in range(1, len(nums)):
+            if nums[i] == nums[-i - 1]:
+                lst.append(True)
+            else:
+                return False
+        return all(lst)
+
 sol = Solution()
-print(sol.firstBadVersion(5))
+
+print(sol.for_cicle(-121))
 
 # print(sol.mySqrt(9))
 

@@ -1,4 +1,11 @@
-from typing import List
+from heapq import merge
+from typing import List, Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
 class Solution:
@@ -103,7 +110,7 @@ class Solution:
         s = str(num)
         result = []
         if s[0] == '-':
-            result.append(int(s[0] + s[1]))  # обрабатываем отрицательное число
+            result.append(int(s[0] + s[1]))
             for digit in s[2:]:
                 result.append(int(digit))
         else:
@@ -118,9 +125,27 @@ class Solution:
                 return False
         return all(lst)
 
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        return list(merge(list1, list2))
+
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        return nums * 2
+
+    def minOperations(self, boxes: str) -> List[int]:
+        n = len(boxes)
+        lst = ['0'] * n
+        for i in range(n):
+            total = 0
+            for j in range(n):
+                if boxes[j] == '1':
+                    total += abs(i - j)
+            lst[i] = total
+        return lst
+
+
 sol = Solution()
 
-print(sol.for_cicle(-121))
+print(sol.minOperations('001011'))
 
 # print(sol.mySqrt(9))
 

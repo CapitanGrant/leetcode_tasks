@@ -1,3 +1,5 @@
+import functools
+import timeit
 from heapq import merge
 from typing import List, Optional
 
@@ -142,20 +144,93 @@ class Solution:
             lst[i] = total
         return lst
 
-    def buildArray(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        res = [0] * n
-        for i in range(n):
-            res[i] = nums[nums[i]]
+    def finalValueAfterOperations(self, operations: List[str]) -> int:
+        counter = 0
+        for operation in operations:
+            if '+' in operation:
+                counter += 1
+            elif '-' in operation:
+                counter -= 1
+        return counter
+
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        lst = []
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[i] == nums[j] and i < j:
+                    lst.append((i, j))
+        return len(lst)
+
+    def getSneakyNumbers(self, nums: List[int]) -> List[int]:
+        res = []
+        lst = []
+        for i in nums:
+            if i not in lst:
+                lst.append(i)
+            else:
+                res.append(i)
         return res
 
+    def minimumOperations(self, nums: List[int]) -> int:
+        count = 0
+        for i in nums:
+            if i % 3 != 0:
+                count += 1
+        return count
 
-sol = Solution()
+    def findArray(self, pref: List[int]) -> List[int]:
+        result = [0] * len(pref)
+        result[0] = pref[0]
+        for i in range(1, len(pref)):
+            result[i] = pref[i] ^ pref[i - 1]
+        return result
 
-print(sol.minOperations('001011'))
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        y = nums[n:]
+        x = nums[:n]
+        res = []
+        for i in range(len(y)):
+            res.append(x[i])
+            res.append(y[i])
+        return res
 
-# print(sol.mySqrt(9))
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        merged = nums1 + nums2
+        merged.sort()
+        n = len(merged)
+        if n % 2 == 0:
+            return (merged[n // 2 - 1] + merged[n // 2]) / 2
+        else:
+            return merged[n // 2]
 
+setup_code = """
+from typing import List
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        merged = nums1 + nums2
+        merged.sort()
+        n = len(merged)
+        if n % 2 == 0:
+            return (merged[n // 2 - 1] + merged[n // 2]) / 2
+        else:
+            return merged[n // 2]
+"""
+
+# Код для тестирования
+test_code = """
+def main():
+    sol = Solution()
+    sol.findMedianSortedArrays(nums1=[1, 2, 3, 4, 5], nums2=[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
+main()
+"""
+
+# Измерение времени выполнения
+elapsed_time = timeit.timeit(test_code, setup=setup_code, number=100) / 100
+print('Elapsed time:', elapsed_time)
+
+
+#Elapsed time: 1.0269999620504676e-06
 # print(sol.isValid(s="()")) # true
 # print(sol.isValid(s="()[]{}")) # true
 # print(sol.isValid(s="(]")) # false

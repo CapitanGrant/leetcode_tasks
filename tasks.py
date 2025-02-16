@@ -203,34 +203,44 @@ class Solution:
         else:
             return merged[n // 2]
 
-setup_code = """
-from typing import List
+    def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
+        res = []
+        for j in range(1, len(B) + 1):
+            len_set = len(set(A[:j]) & set(B[:j]))
+            res.append(len_set)
+        return res
 
-class Solution:
-    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        merged = nums1 + nums2
-        merged.sort()
-        n = len(merged)
-        if n % 2 == 0:
-            return (merged[n // 2 - 1] + merged[n // 2]) / 2
-        else:
-            return merged[n // 2]
-"""
+sol = Solution()
+print(sol.findThePrefixCommonArray(A=[2, 3, 1], B=[3, 1, 2]))
 
-# Код для тестирования
-test_code = """
-def main():
-    sol = Solution()
-    sol.findMedianSortedArrays(nums1=[1, 2, 3, 4, 5], nums2=[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
-main()
-"""
+# setup_code = """
+# from typing import List
+#
+# class Solution:
+#     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+#         merged = nums1 + nums2
+#         merged.sort()
+#         n = len(merged)
+#         if n % 2 == 0:
+#             return (merged[n // 2 - 1] + merged[n // 2]) / 2
+#         else:
+#             return merged[n // 2]
+# """
+#
+# # Код для тестирования
+# test_code = """
+# def main():
+#     sol = Solution()
+#     sol.findMedianSortedArrays(nums1=[1, 2, 3, 4, 5], nums2=[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
+# main()
+# """
+#
+# # Измерение времени выполнения
+# elapsed_time = timeit.timeit(test_code, setup=setup_code, number=100) / 100
+# print('Elapsed time:', elapsed_time)
 
-# Измерение времени выполнения
-elapsed_time = timeit.timeit(test_code, setup=setup_code, number=100) / 100
-print('Elapsed time:', elapsed_time)
 
-
-#Elapsed time: 1.0269999620504676e-06
+# Elapsed time: 1.0269999620504676e-06
 # print(sol.isValid(s="()")) # true
 # print(sol.isValid(s="()[]{}")) # true
 # print(sol.isValid(s="(]")) # false

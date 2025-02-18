@@ -210,8 +210,24 @@ class Solution:
             res.append(len_set)
         return res
 
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        result = []
+        groups = {}
+
+        for ind, group_size in enumerate(groupSizes):
+            if group_size not in groups:
+                groups[group_size] = []
+
+            groups[group_size].append(ind)
+            if len(groups[group_size]) == group_size:
+                result.append(groups[group_size])
+                groups[group_size] = []
+
+        return result
+
+
 sol = Solution()
-print(sol.findThePrefixCommonArray(A=[2, 3, 1], B=[3, 1, 2]))
+print(sol.groupThePeople(groupSizes=[3, 3, 3, 3, 3, 1, 3]))
 
 # setup_code = """
 # from typing import List
@@ -239,7 +255,10 @@ print(sol.findThePrefixCommonArray(A=[2, 3, 1], B=[3, 1, 2]))
 # elapsed_time = timeit.timeit(test_code, setup=setup_code, number=100) / 100
 # print('Elapsed time:', elapsed_time)
 
-
+# Input: groupSizes = [3,3,3,3,3,1,3]
+# Output: [[5],[0,1,2],[3,4,6]]
+# Input: groupSizes = [2,1,3,3,3,2]
+# Output: [[1],[0,5],[2,3,4]]
 # Elapsed time: 1.0269999620504676e-06
 # print(sol.isValid(s="()")) # true
 # print(sol.isValid(s="()[]{}")) # true

@@ -225,9 +225,18 @@ class Solution:
 
         return result
 
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        max_num = max(candies)
+        result = []
+        for candidate in candies:
+            if candidate + extraCandies >= max_num:
+                result.append(True)
+            result.append(False)
+        return result
+
 
 sol = Solution()
-print(sol.groupThePeople(groupSizes=[3, 3, 3, 3, 3, 1, 3]))
+print(sol.kidsWithCandies(candies=[4, 2, 1, 1, 2], extraCandies=1))
 
 # setup_code = """
 # from typing import List

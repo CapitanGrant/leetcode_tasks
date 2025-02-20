@@ -1,7 +1,10 @@
 import functools
+import operator
 import timeit
+from functools import reduce
 from heapq import merge
 from typing import List, Optional
+from itertools import combinations
 
 
 class ListNode:
@@ -234,10 +237,39 @@ class Solution:
             result.append(False)
         return result
 
+    def subsetXORSum(self, nums: List[int]) -> int:
+        power_set = [[]]
+        result = []
+        for x in nums:
+            for i in range(len(power_set)):
+                tmp_list = power_set[i].copy()
+                tmp_list.append(x)
+                power_set.append(tmp_list)
+        for i in range(1, len(power_set)):
+            if len(power_set[i]) > 1:
+                xor_sum = reduce(operator.xor, power_set[i])
+                result.append(xor_sum)
+            elif len(power_set[i]) == 1:
+                result.append(power_set[i][0])
+        return sum(result)
+
+    def findWordsContaining(self, words: List[str], x: str) -> List[int]:
+        res = [en for en, i in enumerate(words) if x in i]
+        return res
 
 sol = Solution()
-print(sol.kidsWithCandies(candies=[4, 2, 1, 1, 2], extraCandies=1))
+print(sol.findWordsContaining(words = ["leet","code"], x = "e"))
+# lst = [5, 1, 6]
+# xor_sum = reduce(operator.xor, lst)
+# print(xor_sum)
+# a = 5
+# b = 1
+# a ^= b
+# x = 6
+# a ^= x
+# print(a)
 
+# combinations
 # setup_code = """
 # from typing import List
 #

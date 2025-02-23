@@ -257,8 +257,33 @@ class Solution:
         res = [en for en, i in enumerate(words) if x in i]
         return res
 
+    def numArmstrong(self, num: int) -> bool:
+        sum = 0
+        len_num = len(str(num))
+        for i in str(num):
+            digit = int(i)
+            sum += digit ** len_num
+        return num == sum
+
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        count = 0
+        set_allowed = set(allowed)
+        for word in words:
+            flag = True
+            for char in word:
+                if char not in set_allowed:
+                    flag = False
+                    break
+            if flag:
+                count += 1
+        return count
+
+
+
 sol = Solution()
-print(sol.findWordsContaining(words = ["leet","code"], x = "e"))
+
+print(sol.countConsistentStrings(allowed="cad", words=["cc", "acd", "b", "ba", "bac", "bad", "ac", "d"]))
+
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)
 # print(xor_sum)

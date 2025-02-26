@@ -281,13 +281,35 @@ class Solution:
     def numberOfEmployeesWhoMetTarget(self, hours: List[int], target: int) -> int:
         count = 0
         for i in hours:
-            if i>=target:
-                count=count+1
+            if i >= target:
+                count = count + 1
         return count
+
+    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+        for i in range(k):
+            min_x = min(nums)
+            ind = nums.index(min_x)
+            nums[ind] = min_x * multiplier
+        return nums
+
+    def countPairs(self, nums: List[int], target: int) -> int:
+        count_num = len(nums)
+        first_ind = 0
+        count = 0
+        while count_num > 0:
+            for i in range(first_ind+ 1, len(nums)):
+                if nums[first_ind] + nums[i] < target:
+                    count = count + 1
+            first_ind += 1
+            count_num -= 1
+        return count
+
+
+
 
 sol = Solution()
 
-print(sol.countConsistentStrings(allowed="cad", words=["cc", "acd", "b", "ba", "bac", "bad", "ac", "d"]))
+print(sol.countPairs(nums = [-6,2,5,-2,-7,-1,3], target = -2))
 
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)

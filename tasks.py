@@ -1,6 +1,7 @@
 import functools
 import operator
 import timeit
+from datetime import time, datetime
 from functools import reduce
 from heapq import merge
 from typing import List, Optional
@@ -304,12 +305,20 @@ class Solution:
             count_num -= 1
         return count
 
+    def minMovesToSeat(self, seats: List[int], students: List[int]) -> int:
+        seats.sort()
+        students.sort()
+        count = 0
+        for x, y in zip(seats, students):
+            count += abs(x - y)
+
+        return count
 
 
 
 sol = Solution()
 
-print(sol.countPairs(nums = [-6,2,5,-2,-7,-1,3], target = -2))
+print(sol.minMovesToSeat(seats = [4,1,5,9], students = [1,3,2,6]))
 
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)

@@ -1,11 +1,7 @@
-import functools
 import operator
-import timeit
-from datetime import time, datetime
 from functools import reduce
 from heapq import merge
 from typing import List, Optional
-from itertools import combinations
 
 
 class ListNode:
@@ -298,7 +294,7 @@ class Solution:
         first_ind = 0
         count = 0
         while count_num > 0:
-            for i in range(first_ind+ 1, len(nums)):
+            for i in range(first_ind + 1, len(nums)):
                 if nums[first_ind] + nums[i] < target:
                     count = count + 1
             first_ind += 1
@@ -314,11 +310,17 @@ class Solution:
 
         return count
 
-
+    def leftRightDifference(self, nums: List[int]) -> List[int]:
+        result = []
+        for i in range(len(nums)):
+            leftSum = sum(nums[:i])
+            rightSum = sum(nums[i + 1:])
+            result.append(abs(leftSum - rightSum))
+        return result
 
 sol = Solution()
 
-print(sol.minMovesToSeat(seats = [4,1,5,9], students = [1,3,2,6]))
+print(sol.leftRightDifference(nums = [1]))
 
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)

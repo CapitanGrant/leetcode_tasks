@@ -318,9 +318,16 @@ class Solution:
             result.append(abs(leftSum - rightSum))
         return result
 
+    def stableMountains(self, height: List[int], threshold: int) -> List[int]:
+        result = []
+        for i in range(1, len(height)):
+            if height[i-1] > threshold:
+                result.append(i)
+        return result
+
 sol = Solution()
 
-print(sol.leftRightDifference(nums = [1]))
+print(sol.stableMountains(height = [1,2,3,4,5], threshold = 2))
 
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)

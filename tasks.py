@@ -325,9 +325,23 @@ class Solution:
                 result.append(i)
         return result
 
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        temp = sorted(nums)
+        d = {}
+        for i, num in enumerate(temp):
+            if num not in d:
+                d[num] = i
+
+        res = []
+        for num in nums:
+            res.append(d[num])
+
+        return res
+
+
 sol = Solution()
 
-print(sol.stableMountains(height = [1,2,3,4,5], threshold = 2))
+print(sol.smallerNumbersThanCurrent(nums = [8,1,2,2,3]))
 
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)

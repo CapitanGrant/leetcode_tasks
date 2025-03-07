@@ -2,7 +2,7 @@ import operator
 from functools import reduce
 from heapq import merge
 from typing import List, Optional
-
+from collections import Counter
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -321,7 +321,7 @@ class Solution:
     def stableMountains(self, height: List[int], threshold: int) -> List[int]:
         result = []
         for i in range(1, len(height)):
-            if height[i-1] > threshold:
+            if height[i - 1] > threshold:
                 result.append(i)
         return result
 
@@ -338,10 +338,25 @@ class Solution:
 
         return res
 
+    def findMatrix(self, nums: List[int]) -> List[List[int]]:
+        cnt = Counter(nums)
+        result = []
+        while sum(cnt.values()) > 0:
+            row = []
+            for num in list(cnt):
+                if cnt[num] > 0:
+                    row.append(num)
+                    cnt[num] -= 1
+            result.append(row)
+        return result
+
+
+
+
 
 sol = Solution()
 
-print(sol.smallerNumbersThanCurrent(nums = [8,1,2,2,3]))
+print(sol.findMatrix(nums=[1, 3, 4, 1, 2, 3, 1]))
 
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)

@@ -4,6 +4,7 @@ from heapq import merge
 from typing import List, Optional
 from collections import Counter
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -350,13 +351,17 @@ class Solution:
             result.append(row)
         return result
 
-
-
-
+    def mostWordsFound(self, sentences: List[str]) -> int:
+        count = 0
+        for i in sentences:
+            words = len(i.split(' '))
+            if count <  words:
+                count = words
+        return count
 
 sol = Solution()
 
-print(sol.findMatrix(nums=[1, 3, 4, 1, 2, 3, 1]))
+print(sol.mostWordsFound(sentences = ["alice and bob love leetcode", "i think so too", "this is great thanks very much"]))
 
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)

@@ -355,14 +355,31 @@ class Solution:
         count = 0
         for i in sentences:
             words = len(i.split(' '))
-            if count <  words:
+            if count < words:
                 count = words
+        return count
+
+    def minOperations(self, nums: List[int], k: int) -> int:
+        count = 0
+        for i in nums:
+            if i < k:
+                count += 1
+        return count
+
+    def numberOfPairs(self, nums1: List[int], nums2: List[int], k: int) -> int:
+        count = 0
+        for i in range(len(nums1)):
+            for j in range(len(nums2)):
+                product = nums2[j] * k
+                if product > nums1[i]:
+                    continue
+                if nums1[i] % product == 0:
+                    count += 1
         return count
 
 sol = Solution()
 
-print(sol.mostWordsFound(sentences = ["alice and bob love leetcode", "i think so too", "this is great thanks very much"]))
-
+print(sol.numberOfPairs(nums1 = [1,2,4,12], nums2 = [2,4], k = 3))
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)
 # print(xor_sum)

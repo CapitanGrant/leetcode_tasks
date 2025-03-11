@@ -1,4 +1,5 @@
 import operator
+from abc import ABC, abstractmethod
 from functools import reduce
 from heapq import merge
 from typing import List, Optional
@@ -377,9 +378,17 @@ class Solution:
                     count += 1
         return count
 
+    def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
+        res = []
+        for i in range(len(nums)):
+            res.insert(index[i], nums[i])
+        return res
+
+
 sol = Solution()
 
-print(sol.numberOfPairs(nums1 = [1,2,4,12], nums2 = [2,4], k = 3))
+print(sol.numberOfPairs(nums1=[1, 2, 4, 12], nums2=[2, 4], k=3))
+
 # lst = [5, 1, 6]
 # xor_sum = reduce(operator.xor, lst)
 # print(xor_sum)

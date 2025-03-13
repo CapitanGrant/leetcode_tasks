@@ -1,7 +1,9 @@
 import operator
+import timeit
 from abc import ABC, abstractmethod
 from functools import reduce
 from heapq import merge
+from itertools import count
 from typing import List, Optional
 from collections import Counter
 
@@ -384,61 +386,51 @@ class Solution:
             res.insert(index[i], nums[i])
         return res
 
+    def sumIndicesWithKSetBits(self, nums: List[int], k: int) -> int:
+        result = 0
+        for i in range(len(nums)):
+            num = bin(i).count('1')
+            if num == k:
+                result += nums[i]
+        return result
 
 sol = Solution()
 
-print(sol.numberOfPairs(nums1=[1, 2, 4, 12], nums2=[2, 4], k=3))
+print(sol.sumIndicesWithKSetBits(nums = [5,10,1,5,2], k = 1))
 
-# lst = [5, 1, 6]
-# xor_sum = reduce(operator.xor, lst)
-# print(xor_sum)
-# a = 5
-# b = 1
-# a ^= b
-# x = 6
-# a ^= x
-# print(a)
+print(Counter(str(bin(1)).replace('0b', '')))
+print(Counter(str(bin(2)).replace('0b', '')))
+print(Counter(str(bin(3)).replace('0b', '')))
+print(Counter(str(bin(4)).replace('0b', '')))
 
-# combinations
+
 # setup_code = """
 # from typing import List
-#
+# from collections import Counter
 # class Solution:
-#     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-#         merged = nums1 + nums2
-#         merged.sort()
-#         n = len(merged)
-#         if n % 2 == 0:
-#             return (merged[n // 2 - 1] + merged[n // 2]) / 2
-#         else:
-#             return merged[n // 2]
+#     def sumIndicesWithKSetBits(self, nums: List[int], k: int) -> int:
+#         result = 0
+#         for i in range(len(nums)):
+#             num = Counter(bin(i)[2:])
+#             if num['1'] == k:
+#                 result += nums[i]
+#         return result
 # """
 #
 # # Код для тестирования
 # test_code = """
 # def main():
 #     sol = Solution()
-#     sol.findMedianSortedArrays(nums1=[1, 2, 3, 4, 5], nums2=[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
+#     sol.sumIndicesWithKSetBits(nums = [5,10,1,5,2], k = 1)
 # main()
 # """
 #
 # # Измерение времени выполнения
 # elapsed_time = timeit.timeit(test_code, setup=setup_code, number=100) / 100
 # print('Elapsed time:', elapsed_time)
-
-# Input: groupSizes = [3,3,3,3,3,1,3]
-# Output: [[5],[0,1,2],[3,4,6]]
-# Input: groupSizes = [2,1,3,3,3,2]
-# Output: [[1],[0,5],[2,3,4]]
-# Elapsed time: 1.0269999620504676e-06
-# print(sol.isValid(s="()")) # true
-# print(sol.isValid(s="()[]{}")) # true
-# print(sol.isValid(s="(]")) # false
 #
-#
-# print(sol.longestCommonPrefix(strs=["flower", "flow", "flight"]))
-# print(sol.longestCommonPrefix(strs=["dog","racecar","car"]))
-#
-#
-# print(sol.addBinary('000100', '110010'))  # 110110
-# print(sol.addBinary('1010', '1011'))  # 10101
+# # Input: groupSizes = [3,3,3,3,3,1,3]
+# # Output: [[5],[0,1,2],[3,4,6]]
+# # Input: groupSizes = [2,1,3,3,3,2]
+# # Output: [[1],[0,5],[2,3,4]]
+# # Elapsed time: 1.0269999620504676e-06

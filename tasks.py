@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from functools import reduce
 from heapq import merge
 from itertools import count
-from typing import List, Optional
+from typing import List, Optional, NamedTuple
 from collections import Counter
 
 
@@ -394,15 +394,26 @@ class Solution:
                 result += nums[i]
         return result
 
+    def truncateSentence(self, s: str, k: int) -> str:
+
+        result = s.split(' ')
+        return ' '.join(result[:k])
+
+    
+
 sol = Solution()
 
-print(sol.sumIndicesWithKSetBits(nums = [5,10,1,5,2], k = 1))
+print(sol.truncateSentence(s = "Hello how are you Contestant", k = 4))
 
-print(Counter(str(bin(1)).replace('0b', '')))
-print(Counter(str(bin(2)).replace('0b', '')))
-print(Counter(str(bin(3)).replace('0b', '')))
-print(Counter(str(bin(4)).replace('0b', '')))
 
+class Coordinate(NamedTuple):
+    lat: float
+    lon: float
+
+    def __str__(self):
+        ns = 'N' if self.lat >= 0 else 'S'
+        we = 'E' if self.lon >= 0 else 'W'
+        return f'{abs(self.lat):.1f}°{ns}, {abs(self.lon):.1f}°{we}'
 
 # setup_code = """
 # from typing import List

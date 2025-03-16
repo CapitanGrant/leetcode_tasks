@@ -399,11 +399,14 @@ class Solution:
         result = s.split(' ')
         return ' '.join(result[:k])
 
-    
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        x1 = ''.join(word1)
+        x2 = ''.join(word2)
+        return True if x1 == x2 else False
 
 sol = Solution()
 
-print(sol.truncateSentence(s = "Hello how are you Contestant", k = 4))
+print(sol.arrayStringsAreEqual(word1 = ["ab", "c"], word2 = ["a", "bc"]))
 
 
 class Coordinate(NamedTuple):

@@ -404,9 +404,18 @@ class Solution:
         x2 = ''.join(word2)
         return True if x1 == x2 else False
 
+    def restoreString(self, s: str, indices: List[int]) -> str:
+        res = {}
+        result = []
+        for x, y in zip(indices, s):
+            res[x] = y
+        for i in range(len(indices)):
+            result.append(res[i])
+        return ''.join(result)
+
 sol = Solution()
 
-print(sol.arrayStringsAreEqual(word1 = ["ab", "c"], word2 = ["a", "bc"]))
+print(sol.restoreString(s = "codeleet", indices = [4,5,6,7,0,2,1,3]))
 
 
 class Coordinate(NamedTuple):

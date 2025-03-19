@@ -413,6 +413,17 @@ class Solution:
             result.append(res[i])
         return ''.join(result)
 
+    def differenceOfSum(self, nums: List[int]) -> int:
+        sum_elem = sum(nums)
+        sum_digit = []
+        sum_digit = 0
+        for i in nums: 
+            while i >0:
+                sum_digit += i % 10
+                i = i// 10
+
+        return abs(sum_elem-sum_digit)
+
 sol = Solution()
 
 print(sol.restoreString(s = "codeleet", indices = [4,5,6,7,0,2,1,3]))

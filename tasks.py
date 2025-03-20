@@ -413,16 +413,21 @@ class Solution:
             result.append(res[i])
         return ''.join(result)
 
-    def differenceOfSum(self, nums: List[int]) -> int:
-        sum_elem = sum(nums)
-        sum_digit = []
-        sum_digit = 0
-        for i in nums: 
-            while i >0:
-                sum_digit += i % 10
-                i = i// 10
+    def countMatches(self, items: List[List[str]], ruleKey: str, ruleValue: str) -> int:
+        if ruleKey == "type":
+            index = 0
+        elif ruleKey == "color":
+            index = 1
+        elif ruleKey == "name":
+            index = 2
+        else:
+            return 0
+        count = 0
+        for item in items:
+            if item[index] == ruleValue:
+                count += 1
 
-        return abs(sum_elem-sum_digit)
+        return count
 
 sol = Solution()
 

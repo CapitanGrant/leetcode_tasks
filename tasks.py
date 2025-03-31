@@ -429,9 +429,30 @@ class Solution:
 
         return count
 
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        count = 0
+        glass = 0
+        metal = 0
+        pepper = 0
+        for item in garbage:
+            if "G" in item:
+                glass += 1
+
+
+        print(glass)
+
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        i = 0
+        for j in range(1, len(nums)):
+            if nums[j] != nums[i]:
+                i += 1
+                nums[i] = nums[j]
+        return i + 1
 sol = Solution()
 
-print(sol.restoreString(s = "codeleet", indices = [4,5,6,7,0,2,1,3]))
+print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))
 
 
 class Coordinate(NamedTuple):

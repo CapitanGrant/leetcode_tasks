@@ -450,6 +450,18 @@ class Solution:
                 i += 1
                 nums[i] = nums[j]
         return i + 1
+
+    def transformArray(self, nums: List[int]) -> List[int]:
+        res = []
+        for i in nums:
+            if i % 2 == 0:
+                res.append(0)
+            else:
+                res.append(1)
+        res.sort()
+        return res
+
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))

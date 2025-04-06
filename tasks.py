@@ -474,6 +474,14 @@ class Solution:
                 equal.append(num)
         return left + equal + right
 
+    def subarraySum(self, nums: List[int]) -> int:
+        res = 0
+        for i in range(len(nums)):
+            start = max(0, i - nums[i])
+            num = nums[start : i+1]
+            subarrey_sum = sum(num)
+            res += subarrey_sum
+        return res
 
 sol = Solution()
 

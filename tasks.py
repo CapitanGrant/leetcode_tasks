@@ -482,6 +482,14 @@ class Solution:
             subarrey_sum = sum(num)
             res += subarrey_sum
         return res
+        
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        lst = []
+        for i in zip(names, heights):
+            lst.append(i)
+        res = sorted(lst, key=lambda x: x[1], reverse=True)
+        result = [i[0] for i in res]
+        return result
 
 sol = Solution()
 

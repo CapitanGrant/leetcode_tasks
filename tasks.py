@@ -491,6 +491,26 @@ class Solution:
         result = [i[0] for i in res]
         return result
 
+    def leftRightDifference(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        left_sum = [0] * n
+        right_sum = [0] * n
+        answer = [0] * n
+
+
+        for i in range(1, n):
+            left_sum[i] = left_sum[i - 1] + nums[i - 1]
+
+
+        for i in range(n - 2, -1, -1):
+            right_sum[i] = right_sum[i + 1] + nums[i + 1]
+
+
+        for i in range(n):
+            answer[i] = abs(left_sum[i] - right_sum[i])
+
+        return answer
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))

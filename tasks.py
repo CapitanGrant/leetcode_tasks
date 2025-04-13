@@ -510,6 +510,16 @@ class Solution:
             answer[i] = abs(left_sum[i] - right_sum[i])
 
         return answer
+    
+    
+    def numberGame(self, nums: List[int]) -> List[int]:
+        res = []
+        nums.sort()
+        for i in range(0, len(nums), 2):
+            if i + 1 < len(nums):
+                res.append(nums[i+1])
+                res.append(nums[i])
+        return res
 
 sol = Solution()
 

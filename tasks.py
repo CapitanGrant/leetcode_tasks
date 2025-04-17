@@ -520,6 +520,17 @@ class Solution:
                 res.append(nums[i+1])
                 res.append(nums[i])
         return res
+        
+    def minimumAverage(self, nums: List[int]) -> float:
+        res = []
+        nums_sorted = sorted(nums)
+        while len(nums_sorted) > 0:
+            min_element = nums_sorted.pop(0)
+            max_element = nums_sorted.pop()
+            average = (min_element + max_element) / 2
+            res.append(average)
+        return min(res)
+
 
 sol = Solution()
 

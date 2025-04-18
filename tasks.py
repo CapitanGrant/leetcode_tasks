@@ -531,6 +531,15 @@ class Solution:
             res.append(average)
         return min(res)
 
+    def prefixCount(self, words: List[str], pref: str) -> int:
+        res = []
+        for i in words:
+            stop = len(pref)
+            if i[0:stop] == pref:
+                res.append(i)
+        return len(res)
+
+
 
 sol = Solution()
 

@@ -539,6 +539,12 @@ class Solution:
                 res.append(i)
         return len(res)
 
+    def firstPalindrome(self, words: List[str]) -> str:
+        for word in words:
+            if word == word[::-1]:
+                return word
+        return ""
+
 
 
 sol = Solution()

@@ -545,6 +545,16 @@ class Solution:
                 return word
         return ""
 
+    def scoreOfString(self, s: str) -> int:
+        res = 0
+        for i in range(len(s)):
+            if i + 1 < len(s):
+                res += abs(ord(s[i]) - ord(s[i + 1]))
+        return res
+
+    def theMaximumAchievableX(self, num: int, t: int) -> int:
+        return num + 2 * t
+
 
 
 sol = Solution()

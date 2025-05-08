@@ -560,6 +560,9 @@ class Solution:
         Fahrenheit = celsius * 1.80 + 32.00
         return [Kelvin, Fahrenheit]
 
+    def defangIPaddr(self, address: str) -> str:
+        return address.replace('.', '[.]')
+
 
 sol = Solution()
 

@@ -577,6 +577,15 @@ class Solution:
     def minPartitions(self, n: str) -> int:
         return max(int(i) for i in n)
 
+
+    def convertDateToBinary(self, date: str) -> str:
+        date_s = date.split('-')
+        res = []
+        for i in date_s:
+            _ = bin(int(i))[2:]
+            res.append(_)
+        return "-".join(res)
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))

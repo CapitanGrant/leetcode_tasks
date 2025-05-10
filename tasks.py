@@ -574,6 +574,9 @@ class Solution:
                 count += 1
         return count
 
+    def minPartitions(self, n: str) -> int:
+        return max(int(i) for i in n)
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))

@@ -585,6 +585,19 @@ class Solution:
             _ = bin(int(i))[2:]
             res.append(_)
         return "-".join(res)
+    
+    
+    def threeConsecutiveOdds(self, arr: List[int]) -> bool:
+        count = 0
+        for i in arr:
+            if i % 2 != 0:
+                count += 1
+                if count == 3:
+                    return True
+            else:
+                count = 0
+        return False
+
 
 sol = Solution()
 

@@ -597,8 +597,12 @@ class Solution:
             else:
                 count = 0
         return False
-
-
+    
+    def smallestEvenMultiple(self, n: int) -> int:
+        if n % 2 == 0:
+            return n
+        else:
+            return n * 2
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))

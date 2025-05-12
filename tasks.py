@@ -603,6 +603,13 @@ class Solution:
             return n
         else:
             return n * 2
+
+
+    def isStrictlyPalindromic(self, n: int) -> bool:
+        return False
+
+
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))

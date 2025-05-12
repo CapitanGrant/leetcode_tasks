@@ -612,6 +612,9 @@ class Solution:
         res = command.replace('()', 'o')
         return res.replace('(al)', 'al')
 
+    def minBitFlips(self, start: int, goal: int) -> int:
+        return bin(start ^ goal).count('1')
+
 
 
 sol = Solution()

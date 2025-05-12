@@ -608,6 +608,10 @@ class Solution:
     def isStrictlyPalindromic(self, n: int) -> bool:
         return False
 
+    def interpret(self, command: str) -> str:
+        res = command.replace('()', 'o')
+        return res.replace('(al)', 'al')
+
 
 
 sol = Solution()

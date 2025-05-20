@@ -615,6 +615,35 @@ class Solution:
     def minBitFlips(self, start: int, goal: int) -> int:
         return bin(start ^ goal).count('1')
 
+    def countAndString(self, data: List[tuple[int, str]]) -> dict[int, int]:
+        result = {}
+        for item in data:
+            first_element = item[0]  # 1
+            if first_element in result:
+                result[first_element] += 1
+            else:
+                result[first_element] = 1
+        return result
+
+    def countAndString1(self, data: List[tuple[int, str]]) -> dict[int, int]:
+        result = {}
+        for num, _ in data:
+            result[num] = result.get(num, 0) + 1
+        return result
+
+    def countAndString2(self, data: List[tuple[int, str]]) -> dict[int, int]:
+        return Counter(num for num, string in data)
+
+    def addList(self, a: Set[int], b: List[int]) -> dict[int, int]:
+        a = sorted(a)
+        res = []
+        for i in range(len(a)):
+            if len(b) > i:
+                x = a[i] + b[i]
+                res.append(x)
+            else:
+                res.append(a[i])
+        return res
 
 
 sol = Solution()

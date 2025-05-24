@@ -669,6 +669,10 @@ class Solution:
 
         return "".join(merged)
 
+    def reverseWords(self, s: str) -> str:
+        s = s.rstrip().lstrip().split()
+        return ' '.join(reversed(s))
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))

@@ -1,5 +1,6 @@
 import operator
 import timeit
+import string
 from abc import ABC, abstractmethod
 from functools import reduce
 from heapq import merge
@@ -672,6 +673,22 @@ class Solution:
     def reverseWords(self, s: str) -> str:
         s = s.rstrip().lstrip().split()
         return ' '.join(reversed(s))
+
+    def cellsInRange(self, s: str) -> List[str]:
+        res = []
+        alph1 = s[0]
+        alph2 = s[3]
+        num1 = int(s[1])
+        num2 = int(s[4])
+        alph = string.ascii_uppercase
+        ind_1 = alph.index(alph1)
+        ind_2 = alph.index(alph2)
+        res_alph = alph[ind_1:ind_2+1]
+        for i in res_alph:
+            for j in range(num1, num2+1):
+                res.append(f'{i}{j}')
+        return res
+
 
 sol = Solution()
 

@@ -692,6 +692,13 @@ class Solution:
     def maxDistinct(self, s: str) -> int:
         return len(set(s))
 
+    def recoverOrder(self, order: List[int], friends: List[int]) -> List[int]:
+        lst = []
+        for i in order:
+            if i in friends:
+                lst.append(i)
+        return lst
+
 
 sol = Solution()
 
@@ -737,4 +744,5 @@ class Coordinate(NamedTuple):
 # # Input: groupSizes = [2,1,3,3,3,2]
 # # Output: [[1],[0,5],[2,3,4]]
 # # Elapsed time: 1.0269999620504676e-06
+
 

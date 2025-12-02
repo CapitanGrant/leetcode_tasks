@@ -687,7 +687,10 @@ class Solution:
         for i in res_alph:
             for j in range(num1, num2+1):
                 res.append(f'{i}{j}')
-        return res
+        return res    
+
+    def maxDistinct(self, s: str) -> int:
+        return len(set(s))
 
 
 sol = Solution()
@@ -734,3 +737,4 @@ class Coordinate(NamedTuple):
 # # Input: groupSizes = [2,1,3,3,3,2]
 # # Output: [[1],[0,5],[2,3,4]]
 # # Elapsed time: 1.0269999620504676e-06
+

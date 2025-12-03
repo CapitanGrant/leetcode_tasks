@@ -708,6 +708,14 @@ class Solution:
                 count -= val
         return count
 
+    def findClosest(self, x: int, y: int, z: int) -> int:
+        if abs(x-z) > abs(y-z):
+            return 2
+        elif abs(x-z) < abs(y-z):
+            return 1
+        else:
+            return 0
+
 
 sol = Solution()
 
@@ -753,6 +761,7 @@ class Coordinate(NamedTuple):
 # # Input: groupSizes = [2,1,3,3,3,2]
 # # Output: [[1],[0,5],[2,3,4]]
 # # Elapsed time: 1.0269999620504676e-06
+
 
 
 

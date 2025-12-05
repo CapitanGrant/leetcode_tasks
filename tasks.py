@@ -715,7 +715,14 @@ class Solution:
             return 1
         else:
             return 0
-
+            
+    def missing_number(self, nums: list[int]) -> int:
+        n = 0
+        for i in range(len(nums)+1):
+            if i not in nums:
+                n = i
+                break
+        return n
 
 sol = Solution()
 
@@ -761,6 +768,7 @@ class Coordinate(NamedTuple):
 # # Input: groupSizes = [2,1,3,3,3,2]
 # # Output: [[1],[0,5],[2,3,4]]
 # # Elapsed time: 1.0269999620504676e-06
+
 
 
 

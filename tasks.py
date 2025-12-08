@@ -724,6 +724,18 @@ class Solution:
                 break
         return n
 
+    def balancedStringSplit(self, s: str) -> int:
+        count = 0
+        balance = 0
+        for i in s:
+            if i == 'R':
+                balance += 1
+            else:
+                balance -= 1
+            if balance == 0:
+                count += 1
+        return count
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))
@@ -768,6 +780,7 @@ class Coordinate(NamedTuple):
 # # Input: groupSizes = [2,1,3,3,3,2]
 # # Output: [[1],[0,5],[2,3,4]]
 # # Elapsed time: 1.0269999620504676e-06
+
 
 
 

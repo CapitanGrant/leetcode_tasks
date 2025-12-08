@@ -735,6 +735,9 @@ class Solution:
             if balance == 0:
                 count += 1
         return count
+        
+    def checkIfPangram(self, sentence: str) -> bool:
+        return len(set(sentence)) == 26
 
 sol = Solution()
 
@@ -780,6 +783,7 @@ class Coordinate(NamedTuple):
 # # Input: groupSizes = [2,1,3,3,3,2]
 # # Output: [[1],[0,5],[2,3,4]]
 # # Elapsed time: 1.0269999620504676e-06
+
 
 
 

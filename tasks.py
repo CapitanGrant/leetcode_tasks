@@ -743,6 +743,28 @@ class Solution:
     def toLowerCase(self, s: str) -> str:
         return s.lower()
 
+    def validateCoupons(self, code: List[str], businessLine: List[str], isActive: List[bool]) -> List[str]:
+        allowed_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_") 
+        allowed_categories = {"electronics", "grocery", "pharmacy", "restaurant"}
+        active_code = []
+        
+        for i in range(len(code)):
+            if (code[i] and all(char in allowed_chars for char in code[i]) and 
+            businessLine[i] in allowed_categories and
+                isActive[i]):
+                active_code.append({"category": businessLine[i], "code": code[i]})
+        
+        category_order = {"electronics": 0, "grocery": 1, "pharmacy": 2, "restaurant": 3}
+        
+
+        sorted_codes = sorted(
+            active_code,
+            key=lambda x: (category_order[x["category"]], x["code"])
+        )
+        
+
+        return [item["code"] for item in sorted_codes]
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))
@@ -787,6 +809,7 @@ class Coordinate(NamedTuple):
 # # Input: groupSizes = [2,1,3,3,3,2]
 # # Output: [[1],[0,5],[2,3,4]]
 # # Elapsed time: 1.0269999620504676e-06
+
 
 
 

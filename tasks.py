@@ -765,6 +765,12 @@ class Solution:
 
         return [item["code"] for item in sorted_codes]
 
+    def reversePrefix(self, s: str, k: int) -> str:
+        x = s[k:]
+        y = s[:k]
+        return y[::-1] + x
+
+
 sol = Solution()
 
 print(sol.removeDuplicates(nums = [0,0,1,1,1,2,2,3,3,4]))
@@ -809,6 +815,7 @@ class Coordinate(NamedTuple):
 # # Input: groupSizes = [2,1,3,3,3,2]
 # # Output: [[1],[0,5],[2,3,4]]
 # # Elapsed time: 1.0269999620504676e-06
+
 
 
 
